@@ -1,0 +1,51 @@
+# AI Trust Scoring System for Fake Review Detection
+
+
+
+## Project Overview
+
+The AI Trust Scoring System is a full-stack machine learning application designed to identify and flag sophisticated fake reviews (opinion spam) on e-commerce and local business platforms. 
+
+Traditional fake review detectors rely solely on Natural Language Processing (NLP). However, modern deceptive reviews are often written by paid human crowdsourcers or Large Language Models (LLMs), making their text indistinguishable from genuine reviews. To solve this, this project implements a **Hybrid Dual-Engine Architecture** that analyzes both textual linguistics and user behavioral metadata to generate a comprehensive Trust Score.
+
+## Methodology & Architecture
+
+This system evaluates reviews through two distinct layers of analysis:
+
+### 1. The Textual Intelligence Engine (NLP)
+This engine analyzes the actual content of the review to detect deceptive linguistic patterns.
+* **Data Preprocessing:** Utilizes `nltk` for text normalization, stop-word removal, and lemmatization.
+* **Feature Extraction:** Converts cleaned text into numerical vectors using **TF-IDF (Term Frequency-Inverse Document Frequency)**.
+* **Classification Model:** Employs a **Random Forest Classifier** trained on a dataset of over 350,000 reviews. To combat class imbalance and ensure accurate identification of genuine reviews, the model is optimized using Cost-Sensitive Learning (`class_weight='balanced'`).
+
+### 2. The Behavioral Analytics Engine (Heuristics)
+This deterministic engine evaluates the user's metadata and posting history. Even if the NLP engine passes the text as human-written, the behavioral engine applies mathematical penalties for bot-like activity:
+* **Review Velocity Penalty:** Flags users who post an impossibly high volume of reviews within a 24-hour window.
+* **Rating Extremity Penalty:** Calculates the standard deviation of a user's lifetime ratings. Users with zero variance (e.g., exclusively posting 5-star reviews to boost a product) are mathematically flagged.
+
+The final output is a **0-100% Trust Score** derived from the base machine learning probability minus the behavioral penalties.
+
+## Key Features
+
+* **Real-Time Analysis Dashboard:** A front-end interface where users can input review text and a User ID to receive an instant Trust Score classification.
+* **Persistent Logging Integration:** Powered by **SQLite**, every analyzed review is permanently stored in a local database to ensure auditable system actions.
+* **Admin Security Portal:** A dedicated web route (`/admin`) that queries the database to display a live, historical log of all processed reviews and triggered behavioral warnings.
+
+## Tech Stack
+
+* **Machine Learning:** Scikit-learn, NLTK, Pandas, NumPy
+* **Backend Pipeline:** Python, Flask, SQLite3
+* **Frontend:** HTML5, CSS3, Vanilla JavaScript (Fetch API)
+* **Model Serialization:** Joblib
+
+## Repository Structure
+```text
+├── models/
+│   ├── random_forest_model.pkl       # Serialized ML model (Ignored in Git)
+│   ├── tfidf_vectorizer.pkl          # Serialized vectorizer (Ignored in Git)
+├── templates/
+│   ├── index.html                    # Main Scanner UI
+│   └── admin.html                    # Security Logs Dashboard
+├── app.py                            # Flask Server & API routing
+├── requirements.txt                  # Dependency list
+└── README.md                         # Project documentation
