@@ -1,4 +1,9 @@
 # AI Trust Scoring System for Fake Review Detection
+<img width="2880" height="1800" alt="index" src="https://github.com/user-attachments/assets/8ce4293b-4b1e-428b-8848-5b40e9952d23" />
+
+<img width="2880" height="1800" alt="index with review" src="https://github.com/user-attachments/assets/66d598d2-acf5-4353-9864-d9e938a5c297" />
+
+<img width="2880" height="1800" alt="admin" src="https://github.com/user-attachments/assets/f9a9d9db-0638-4422-854d-e6659906f488" />
 
 
 
