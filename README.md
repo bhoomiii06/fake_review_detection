@@ -41,19 +41,7 @@ The final output is a **0-100% Trust Score** derived from the base machine learn
 * **Backend Pipeline:** Python, Flask, SQLite3
 * **Frontend:** HTML5, CSS3, Vanilla JavaScript (Fetch API)
 * **Model Serialization:** Joblib
-
-## Repository Structure
-```text
-├── models/
-│   ├── random_forest_model.pkl       # Serialized ML model (Ignored in Git)
-│   ├── tfidf_vectorizer.pkl          # Serialized vectorizer (Ignored in Git)
-├── templates/
-│   ├── index.html                    # Main Scanner UI
-│   └── admin.html                    # Security Logs Dashboard
-├── app.py                            # Flask Server & API routing
-├── requirements.txt                  # Dependency list
-└── README.md                         # Project documentation
-
+  
 ## Installation and Local Setup
 
 To deploy this application locally, follow these steps:
@@ -77,3 +65,17 @@ python app.py
 **5. Access the Web Interface**
 Main Scanner: http://127.0.0.1:5000
 Admin Security Logs: http://127.0.0.1:5000/admin
+
+## Repository Structure
+```text
+├── models/
+│   ├── random_forest_model.pkl       # Serialized ML model (Ignored in Git)
+│   ├── tfidf_vectorizer.pkl          # Serialized vectorizer (Ignored in Git)
+├── templates/
+│   ├── index.html                    # Main Scanner UI
+│   └── admin.html                    # Security Logs Dashboard
+├── app.py                            # Flask Server & API routing
+├── requirements.txt                  # Dependency list
+└── README.md                         # Project documentation
+
+
