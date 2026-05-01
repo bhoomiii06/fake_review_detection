@@ -53,3 +53,27 @@ The final output is a **0-100% Trust Score** derived from the base machine learn
 ├── app.py                            # Flask Server & API routing
 ├── requirements.txt                  # Dependency list
 └── README.md                         # Project documentation
+
+## Installation and Local Setup
+
+To deploy this application locally, follow these steps:
+
+**1. Clone the repository**
+''Bash
+git clone https://github.com/bhoomiii06/fake_review_detection.git
+
+**2. Activate the virtual environment**
+''Bash
+env\Scripts\activate
+
+**3. Install required dependencies**
+''Bash
+pip install -r requirements.txt
+
+**4. Start the application server**
+''Bash
+python app.py
+
+**5. Access the Web Interface**
+Main Scanner: http://127.0.0.1:5000
+Admin Security Logs: http://127.0.0.1:5000/admin
